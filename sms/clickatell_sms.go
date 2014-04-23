@@ -40,7 +40,6 @@ func SendSMS(user, password, apiid, phonenumber, message string) (id string, err
 		Dial:            functimeout,
 	}
 	client := &http.Client{Transport: tr}
-	//http://api.clickatell.com/http/sendmsg?user=luiszlochevsky&password=[PASSWORD]&api_id=3476288&to=5511984483161&text=Message
 	resp, err := client.PostForm("https://api.clickatell.com/http/sendmsg", url.Values{"user": {user}, "password": {password}, "api_id": {apiid}, "to": {phonenumber}, "text": {message}})
 	if err != nil {
 		return
