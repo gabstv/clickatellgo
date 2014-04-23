@@ -3,17 +3,11 @@ package sms
 import (
 	"bytes"
 	"crypto/tls"
-	"encoding/json"
 	"fmt"
-	"github.com/HourlyHost/gorest"
-	"github.com/jmoiron/jsonq"
 	"io"
-	"io/ioutil"
 	"net"
 	"net/http"
 	"net/url"
-	"os"
-	"strconv"
 	"time"
 )
 
