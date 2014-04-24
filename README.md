@@ -1,5 +1,6 @@
 # Clickatell apis for Go
-## WIP
+
+## SMS
 
 ### Usage
 ```go
