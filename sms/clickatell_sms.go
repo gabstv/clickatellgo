@@ -3,11 +3,13 @@ package sms
 import (
 	"bytes"
 	"crypto/tls"
+	"errors"
 	"fmt"
 	"io"
 	"net"
 	"net/http"
 	"net/url"
+	"strings"
 	"time"
 )
 
@@ -47,6 +49,11 @@ func SendSMS(user, password, apiid, phonenumber, message string) (id string, err
 	var buffer bytes.Buffer
 	defer resp.Body.Close()
 	io.Copy(&buffer, resp.Body)
-	fmt.Println(buffer.String())
+	respstr := buffer.String()
+	if strings.HasPrefix(respstr, "ID: ") {
+		id = respstr[4:]
+	} else {
+		err = errors.New(respstr)
+	}
 	return
 }
